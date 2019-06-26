@@ -25,7 +25,9 @@ def extract_frame(file_path):
     video = cv2.VideoCapture(file_path)
     video_fps = int(video.get(cv2.CAP_PROP_FPS))
     video_length = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
-    video_length_one = int(video_length / 100)
+    video_length_one = 1
+    if video_length > 100:
+        video_length_one = int(video_length / 100)
     video_save_fps = int(video_fps / args.fps)
 
     extract_today = date.today().strftime('%m%d')
@@ -65,5 +67,4 @@ if __name__ == '__main__':
 
     else:
         print('% % % % % % % % % no file or directory % % % % % % % % %')
-
 
